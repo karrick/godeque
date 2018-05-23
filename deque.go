@@ -14,12 +14,12 @@ type Deque struct {
 	length     int
 }
 
-// Len returns the number of items in the list.
+// Len returns the number of items in the deque.
 func (d *Deque) Len() int {
 	return d.length
 }
 
-// Pop extracts and returns the datum from the tail of the list, causing the
+// Pop extracts and returns the datum from the tail of the deque, causing the
 // tail to move to its previous element.
 func (d *Deque) Pop() (interface{}, bool) {
 	if d.tail == nil {
@@ -36,7 +36,7 @@ func (d *Deque) Pop() (interface{}, bool) {
 	return datum, true
 }
 
-// Push appends datum to the tail of the list causing it to become the new list
+// Push appends datum to the tail of the deque causing it to become the new list
 // tail.
 func (d *Deque) Push(datum interface{}) {
 	n := &dnode{datum: datum, prev: d.tail}
@@ -49,8 +49,8 @@ func (d *Deque) Push(datum interface{}) {
 	d.tail = n
 }
 
-// Shift extracts and returns the datum from the head of the list, advancing the
-// head to the next item in the list.
+// Shift extracts and returns the datum from the head of the deque, advancing
+// the head to the next item in the deque.
 func (d *Deque) Shift() (interface{}, bool) {
 	if d.head == nil {
 		return nil, false
@@ -66,7 +66,7 @@ func (d *Deque) Shift() (interface{}, bool) {
 	return datum, true
 }
 
-// Unshift prepends datum to the head of the list causing it to become the new
+// Unshift prepends datum to the head of the deque causing it to become the new
 // list head.
 func (d *Deque) Unshift(datum interface{}) {
 	n := &dnode{datum: datum, next: d.head}
@@ -79,14 +79,14 @@ func (d *Deque) Unshift(datum interface{}) {
 	d.length++
 }
 
-// Enqueue appends datum to the tail of the list causing it to become the new
+// Enqueue appends datum to the tail of the deque causing it to become the new
 // list tail.
 func (d *Deque) Enqueue(datum interface{}) {
 	d.Push(datum)
 }
 
-// Dequeue extracts and returns the datum from the head of the list, advancing
-// the head to the next item in the list.
+// Dequeue extracts and returns the datum from the head of the deque, advancing
+// the head to the next item in the deque.
 func (d *Deque) Dequeue() (interface{}, bool) {
 	return d.Shift()
 }
