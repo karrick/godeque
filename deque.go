@@ -18,7 +18,7 @@ type Deque interface {
 	Unshift(interface{})
 }
 
-// Queue is a first-in-first-out data structure that allows insertion and
+// Queue is a first-in-first-out (FIFO) data structure that allows insertion and
 // removal of datum values.
 type Queue interface {
 	Enqueue(interface{})
