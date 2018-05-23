@@ -1,19 +1,13 @@
-package godeque
+package godeque_test
 
 import (
 	"math/rand"
 	"testing"
+
+	"github.com/karrick/godeque"
 )
 
-type deque interface {
-	Len() int
-	Pop() (interface{}, bool)
-	Push(interface{})
-	Shift() (interface{}, bool)
-	Unshift(interface{})
-}
-
-func testSuite(t *testing.T, init func() deque) {
+func testDeque(t *testing.T, init func() godeque.Deque) {
 	t.Run("push pop", func(t *testing.T) {
 		// behaves like a stack
 
@@ -319,7 +313,7 @@ func testSuite(t *testing.T, init func() deque) {
 	})
 }
 
-func benchmarkSuite(b *testing.B, init func() deque) {
+func benchmarkDeque(b *testing.B, init func() godeque.Deque) {
 	values := rand.Perm(b.N)
 
 	d := init()

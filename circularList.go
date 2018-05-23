@@ -1,20 +1,23 @@
 package godeque
 
-// circularList is a deque implemented with a circular list.
-type circularList struct {
+// CircularList is a deque implemented with a circular list.
+//
+// While correct, this implementation is not as fast as a List, but provided for
+// reference.
+type CircularList struct {
 	head   *dnode
 	tail   *dnode
 	length int
 }
 
 // Len returns the number of items in the list.
-func (d *circularList) Len() int {
+func (d *CircularList) Len() int {
 	return d.length
 }
 
 // Pop extracts and returns the datum from the tail of the list, causing the
 // tail to move to its previous element.
-func (cl *circularList) Pop() (interface{}, bool) {
+func (cl *CircularList) Pop() (interface{}, bool) {
 	if cl.head == nil {
 		return nil, false
 	}
@@ -38,7 +41,7 @@ func (cl *circularList) Pop() (interface{}, bool) {
 
 // Push appends datum to the tail of the list causing it to become the new list
 // tail.
-func (cl *circularList) Push(datum interface{}) {
+func (cl *CircularList) Push(datum interface{}) {
 	n := &dnode{datum: datum}
 
 	if cl.head == nil {
@@ -60,7 +63,7 @@ func (cl *circularList) Push(datum interface{}) {
 
 // Shift extracts and returns the datum from the head of the list, advancing the
 // head to the next item in the list.
-func (cl *circularList) Shift() (interface{}, bool) {
+func (cl *CircularList) Shift() (interface{}, bool) {
 	if cl.head == nil {
 		return nil, false
 	}
@@ -84,7 +87,7 @@ func (cl *circularList) Shift() (interface{}, bool) {
 
 // Unshift prepends datum to the head of the list causing it to become the new
 // list head.
-func (cl *circularList) Unshift(datum interface{}) {
+func (cl *CircularList) Unshift(datum interface{}) {
 	n := &dnode{datum: datum}
 
 	if cl.head == nil {
@@ -105,7 +108,7 @@ func (cl *circularList) Unshift(datum interface{}) {
 }
 
 // Forward advances the head and tail one element further into the list.
-func (cl *circularList) Forward() {
+func (cl *CircularList) Forward() {
 	if cl.head == nil {
 		return
 	}
@@ -114,7 +117,7 @@ func (cl *circularList) Forward() {
 }
 
 // Reverse retards the head and tail one element back from the list.
-func (cl *circularList) Reverse() {
+func (cl *CircularList) Reverse() {
 	if cl.head == nil {
 		return
 	}
@@ -123,7 +126,7 @@ func (cl *circularList) Reverse() {
 }
 
 // Peek returns the datum at the head of the list without modifying the list.
-func (cl *circularList) Peek() (interface{}, bool) {
+func (cl *CircularList) Peek() (interface{}, bool) {
 	if cl.head == nil {
 		return nil, false
 	}
@@ -132,12 +135,12 @@ func (cl *circularList) Peek() (interface{}, bool) {
 
 // Enqueue appends datum to the tail of the list causing it to become the new
 // list tail.
-func (cl *circularList) Enqueue(datum interface{}) {
+func (cl *CircularList) Enqueue(datum interface{}) {
 	cl.Push(datum)
 }
 
 // Dequeue extracts and returns the datum from the head of the list, advancing
 // the head to the next item in the list.
-func (cl *circularList) Dequeue() (interface{}, bool) {
+func (cl *CircularList) Dequeue() (interface{}, bool) {
 	return cl.Shift()
 }

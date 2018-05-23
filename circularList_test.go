@@ -1,15 +1,19 @@
-package godeque
+package godeque_test
 
-import "testing"
+import (
+	"testing"
 
-func newCircularList() deque {
-	return new(circularList)
+	"github.com/karrick/godeque"
+)
+
+func newCircularList() godeque.Deque {
+	return new(godeque.CircularList)
 }
 
 func TestCircularList(t *testing.T) {
-	testSuite(t, newCircularList)
+	testDeque(t, newCircularList)
 }
 
 func BenchmarkCircularList(b *testing.B) {
-	benchmarkSuite(b, newCircularList)
+	benchmarkDeque(b, newCircularList)
 }
