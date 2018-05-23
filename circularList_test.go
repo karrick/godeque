@@ -2,8 +2,8 @@ package godeque
 
 import "testing"
 
-func newCircularList() dequelike {
-	return new(CircularList)
+func newCircularList() deque {
+	return new(circularList)
 }
 
 func TestCircularList(t *testing.T) {

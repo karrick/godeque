@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-type dequelike interface {
+type deque interface {
 	Len() int
 	Pop() (interface{}, bool)
 	Push(interface{})
@@ -13,7 +13,7 @@ type dequelike interface {
 	Unshift(interface{})
 }
 
-func testSuite(t *testing.T, init func() dequelike) {
+func testSuite(t *testing.T, init func() deque) {
 	t.Run("push pop", func(t *testing.T) {
 		// behaves like a stack
 
@@ -319,7 +319,7 @@ func testSuite(t *testing.T, init func() dequelike) {
 	})
 }
 
-func benchmarkSuite(b *testing.B, init func() dequelike) {
+func benchmarkSuite(b *testing.B, init func() deque) {
 	values := rand.Perm(b.N)
 
 	d := init()
