@@ -2,7 +2,7 @@ package godeque
 
 import "testing"
 
-func newDeque() dequelike {
+func newDeque() deque {
 	return new(Deque)
 }
 
