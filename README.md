@@ -21,11 +21,6 @@ by wrapping a List with a sync.RWMutex. Due to its relative
 simplicity, List is slightly more performant than CircularList in
 benchmarks.
 
-*NOTE* If all you need is a Queue, then I highly recommend using
-[https://github.com/karrick/goqueue](https://github.com/karrick/goqueue),
-which is a lock-free queue, which is much more performant than
-LockingList provided by this library.
-
 ```Go
 package main
 
